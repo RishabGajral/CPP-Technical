@@ -1,0 +1,63 @@
+/******************************************************************************
+##################===== C O N S T R U C T O R S ========#########################
+1. Default constructor
+2. Constructor delegation: calling parameterized constructor from default constructor
+3. copy constructor
+4. move constructor: moving the constructor 
+
+*******************************************************************************/
+
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+class Base{
+    
+    public:
+    int length;
+    int breadth;
+    
+    Base():Base(10,20){
+        cout<<"Base deafault constructor called"<<endl;
+    }
+    Base(int i,int j){
+        length=i;
+        breadth=j;
+        cout<<"Base parameterized constructor called"<<endl; 
+    }
+    Base(Base& obj){
+        length=obj.length;
+        breadth=obj.breadth;
+    }
+    Base (Base&& obj){
+        length=move(obj.length);
+        breadth=move(obj.breadth);
+        obj.length=0;
+        obj.breadth=0;
+    }
+    
+};
+int main()
+{
+    Base b; //constructor delegation. calling parameterized constructor from constructor
+    cout<<b.length<<endl;  
+    Base c(b);   //copy constructor
+    cout<<"copy constructor"<<c.breadth<<endl;
+    // move constructor passing "obj c" and moving to object d
+    Base d=move(c); 
+    cout<<"d object length:"<<d.length<<"c object length: "<<c.length<<endl;
+    
+    
+    
+    return 0;
+}
+
+
+/* output
+Base parameterized constructor called
+Base deafault constructor called
+10
+copy constructor20
+d object length:10c object length: 0
+
+*/
