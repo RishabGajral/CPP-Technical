@@ -24,6 +24,11 @@ class dynamic_copy{
   
   dynamic_copy(dynamic_copy& obj){
       data=obj.data;
+    /* deep copy
+      data=new int(*(obj.data));
+      creating a new memory for integer --> not directly assigning the address of obj1 to obj2
+      assign data to the created memory with assigning it to obj.value
+    */
   }
   ~dynamic_copy(){
       delete data;
