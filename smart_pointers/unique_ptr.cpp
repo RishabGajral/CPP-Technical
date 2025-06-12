@@ -19,7 +19,8 @@ int main() {
    unique_ptr<base> base_obj(new base());
               OR   
    */
-   unique_ptr<base> base_obj=make_unique<base>(); //creating a unique pointer type and  assign with make_unique<base> because it will return the address compatible to unique ptr type ptr address
+   unique_ptr<base> base_obj=make_unique<base>(); 
+   //creating a unique pointer type and  assign with make_unique<base> because it will return the address compatible to unique ptr type ptr address
    cout<<base_obj->a<<endl; // o/p=>10
    
    //now i will try to assign it to other unique ptr
